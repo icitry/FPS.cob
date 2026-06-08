@@ -10,8 +10,8 @@ It supports two level styles:
 
 ## Requirements
 
-- `cobc`
-- `ffplay`
+- `cobc`   from the GnuCOBOL project
+- `ffplay` from the FFMpeg project
 - `bash`
 
 ## Run
@@ -33,6 +33,7 @@ bash build.sh ./map/doom_sectors.map
 
 - `W` / `S`: move forward and backward
 - `A` / `D`: turn left and right
+- `F` toggle full-screen
 - `Space`: fire
 - `Q`: quit
 
