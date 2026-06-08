@@ -853,68 +853,7 @@
            MOVE 100 TO PLAYER_HP
            MOVE 0.0 TO WORLD_PLAYER_FLOOR_Z
 
-           PERFORM VARYING I FROM 1 BY 1 UNTIL I > 64
-               MOVE SPACES TO MAP-ROW(I)
-               PERFORM VARYING J FROM 1 BY 1 UNTIL J > 64
-                   MOVE 0 TO GRID-SECTOR-CELL(I, J)
-               END-PERFORM
-           END-PERFORM
-
-           PERFORM VARYING I FROM 1 BY 1 UNTIL I > MAX_VERTICES
-               MOVE 0.0 TO V_POS_X(I)
-               MOVE 0.0 TO V_POS_Y(I)
-           END-PERFORM
-
-           PERFORM VARYING I FROM 1 BY 1 UNTIL I > MAX_SECTORS
-               MOVE 0 TO S_IS_ACTIVE(I)
-               MOVE 0.0 TO S_FLOOR_Z(I)
-               MOVE 1.0 TO S_CEIL_Z(I)
-               MOVE 1 TO S_WALL_TEX(I)
-               MOVE CEIL_R TO S_CEIL_R(I)
-               MOVE CEIL_G TO S_CEIL_G(I)
-               MOVE CEIL_B TO S_CEIL_B(I)
-               MOVE FLOOR_R TO S_FLOOR_R(I)
-               MOVE FLOOR_G TO S_FLOOR_G(I)
-               MOVE FLOOR_B TO S_FLOOR_B(I)
-           END-PERFORM
-
-           PERFORM VARYING I FROM 1 BY 1 UNTIL I > MAX_LINEDEFS
-               MOVE 0 TO L_IS_ACTIVE(I)
-               MOVE 0 TO L_V1(I)
-               MOVE 0 TO L_V2(I)
-               MOVE 0 TO L_FRONT_SECTOR(I)
-               MOVE 0 TO L_BACK_SECTOR(I)
-               MOVE 0 TO L_FLAGS(I)
-               MOVE 1 TO L_MID_TEX(I)
-               MOVE 1 TO L_UPPER_TEX(I)
-               MOVE 1 TO L_LOWER_TEX(I)
-               MOVE 0.0 TO L_X1(I)
-               MOVE 0.0 TO L_Y1(I)
-               MOVE 0.0 TO L_X2(I)
-               MOVE 0.0 TO L_Y2(I)
-           END-PERFORM
-
-           PERFORM VARYING I FROM 1 BY 1 UNTIL I > MAX_THINGS
-               MOVE 0 TO T_IS_ACTIVE(I)
-               MOVE THING_NONE TO T_KIND(I)
-               MOVE 0.0 TO T_POS_X(I)
-               MOVE 0.0 TO T_POS_Y(I)
-               MOVE 0 TO T_SECTOR(I)
-               MOVE 0 TO T_VALUE(I)
-           END-PERFORM
-
-           PERFORM VARYING I FROM 1 BY 1 UNTIL I > MAX_SSECTORS
-               MOVE 0 TO SS_IS_ACTIVE(I)
-               MOVE 0 TO SS_SECTOR_ID(I)
-           END-PERFORM
-
-           PERFORM VARYING I FROM 1 BY 1 UNTIL I > MAX_BSP_NODES
-               MOVE 0 TO B_IS_ACTIVE(I)
-               MOVE 0 TO B_AXIS(I)
-               MOVE 0.0 TO B_SPLIT_POS(I)
-               MOVE 0 TO B_FRONT_CHILD(I)
-               MOVE 0 TO B_BACK_CHILD(I)
-           END-PERFORM.
+           INITIALIZE MAP_DATA, GRID_SECTORS VERTICES, SECTORS, LINEDEFS, THINGS, SSECTORS, BSP_NODES.
 
       HANDLE-LEVEL-LINE.
            IF MAP_DATA_LINE(1:1) = "#" OR MAP_DATA_LINE = SPACES
