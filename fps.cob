@@ -18,10 +18,11 @@
       WORKING-STORAGE SECTION.
       
       *> Rendering
-      01   RENDER_SLEEP                PIC S9(9) COMP-5 VALUE 16000.  *> ~16ms (≈60 fps cap)
+      78   RENDER_SLEEP                0.0016.  *> ~16ms (≈60 fps cap)
       01   WINDOW_WIDTH                PIC 9(4) COMP-5 VALUE 120.
       01   WINDOW_HEIGHT               PIC 9(4) COMP-5 VALUE 90.
-      01   WINDOW_PIXELS_COUNT         PIC 9(9) COMP-5 VALUE 32400. *> 120*90*3
+      78   WPC_VAL                     VALUE 120 * 90 * 3.
+      01   WINDOW_PIXELS_COUNT         PIC 9(9) COMP-5 VALUE WPC_VAL.
       01   FRAMEBUF.
            05 FB-BYTE OCCURS 35000 TIMES PIC X.
        
@@ -57,7 +58,7 @@
 
       78   TEX_WIDTH                   VALUE 64.
       78   TEX_HEIGHT                  VALUE 64.
-      78   TEX_DATA                    VALUE 12288.  *> 64*64*3
+      78   TEX_DATA                    VALUE 64*64*3.
       78   WALL_TEX_NUM                VALUE 4.
       78   SPR_DEPTH_PIXELS            VALUE 10800.
 
@@ -355,7 +356,7 @@
       01   WALL_B                      PIC 9(3) COMP-5.
        
       01   PIXEL_IDX                   PIC 9(9) COMP-5.
-      01   PIXEL_TEX_OFFSETET                PIC 9(9) COMP-5.
+      01   PIXEL_TEX_OFFSETET          PIC 9(9) COMP-5.
       01   SPR_DEPTH_IDX               PIC 9(5) COMP-5.
        
       01   ALONG                       USAGE COMP-2.
@@ -583,7 +584,7 @@
        
                PERFORM BUILD-FRAME
                PERFORM WRITE-FRAME
-               CALL "usleep" USING BY VALUE RENDER_SLEEP END-CALL
+               CONTINUE AFTER RENDER_SLEEP SECONDS
            END-PERFORM
        
            PERFORM TERM-SANE
