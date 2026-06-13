@@ -10,6 +10,10 @@ It supports two level styles:
 - `map/level1.map`: the original grid-based Wolf3D-style path.
 - `map/doom_sectors.map`: a sector/linedef map with doors, different heights (so DOOM-like).
 
+## Screenshot
+
+<a href="screenshot.png"><img alt="Screenshot." src="screenshot.png" width="400"></a>
+
 ## Requirements
 
 - `cobc`
